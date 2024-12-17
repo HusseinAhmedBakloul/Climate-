@@ -46,9 +46,9 @@ class _SettingState extends State<Setting> {
       _notificationsEnabled = enabled;
     });
     if (enabled) {
-      scheduleWeatherNotifications(); // Schedule notifications
+      scheduleWeatherNotifications();
     } else {
-      AwesomeNotifications().cancelAll(); // Cancel all notifications
+      AwesomeNotifications().cancelAll();
     }
   }
 

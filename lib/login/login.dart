@@ -25,11 +25,9 @@ class _LoginState extends State<Login> {
         password: _passwordController.text.trim(),
       );
 
-      // If successful, navigate to home view
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => WelcomeScreen()));
     } catch (e) {
-      // Handle any errors here
       setState(() {
         _errorMessage = 'Check your email or password';
         _hasError = true;
@@ -197,7 +195,7 @@ class _LoginState extends State<Login> {
                     minimumSize: const Size(double.infinity, 60),
                   ),
                   onPressed: () {
-                    login(); // Call the login function here
+                    login();
                   },
                   child: const Text('Login',
                       style: TextStyle(

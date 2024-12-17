@@ -8,13 +8,9 @@ import 'package:weather_app/Pages/WelcomeScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Check if Firebase is already initialized
   await Firebase.initializeApp();
-
-  // Initialize Awesome Notifications
   AwesomeNotifications().initialize(
-    null, // Default notification icon
+    null,
     [
       NotificationChannel(
         channelKey: 'daily_weather',
@@ -28,7 +24,6 @@ Future<void> main() async {
     ],
   );
 
-  // Run the app
   runApp(
     MultiProvider(
       providers: [
@@ -45,13 +40,12 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider =
-        Provider.of<ThemeProvider>(context); // Access the theme provider
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: themeProvider.currentTheme, // Set the app theme dynamically
-      home: const WelcomeScreen(), // Initial screen for the app
+      theme: themeProvider.currentTheme,
+      home: const WelcomeScreen(),
     );
   }
 }

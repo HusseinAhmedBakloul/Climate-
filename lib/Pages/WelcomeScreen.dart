@@ -30,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
         children: [
           Positioned(
             top: 140,
-            left: MediaQuery.of(context).size.width / 2 - 150, // توسيط العنصر
+            left: MediaQuery.of(context).size.width / 2 - 150,
             child: ClipOval(
               child: Image.asset(
                 'Images/Screenshot_2024-12-05_211856-removebg-preview.png',
@@ -111,7 +111,7 @@ class WelcomeScreen extends StatelessWidget {
           // زر Get Started
           Positioned(
             bottom: 35,
-            left: MediaQuery.of(context).size.width / 2 - 125, // توسيط العنصر
+            left: MediaQuery.of(context).size.width / 2 - 125,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.push(

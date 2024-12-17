@@ -40,7 +40,6 @@ class _SearchState extends State<Search> {
             'Description': data['weather'][0]['description'],
             'Pressure': data['main']['pressure'].toString(),
             'Feels Like': data['main']['feels_like'].toString(),
-            // تنسيق الوقت لشروق وغروب الشمس
             'Sunrise': DateFormat.jm().format(
                 DateTime.fromMillisecondsSinceEpoch(
                     data['sys']['sunrise'] * 1000)),
@@ -100,7 +99,7 @@ class _SearchState extends State<Search> {
                     Color.fromARGB(255, 3, 6, 36),
                   ],
                 )
-              : null, // إذا لم يكن الوضع الليلي، اتركه بدون تدرج
+              : null,
           color: themeProvider.isDarkMode ? null : Colors.white,
         ),
         child: Padding(
@@ -134,8 +133,7 @@ class _SearchState extends State<Search> {
                       focusNode: focusNode,
                       cursorColor: themeProvider.textColor,
                       cursorErrorColor: themeProvider.textColor,
-                      style: TextStyle(
-                          color: themeProvider.textColor), // تغيير لون النص هنا
+                      style: TextStyle(color: themeProvider.textColor),
                       decoration: InputDecoration(
                           labelText: 'Search City',
                           labelStyle: TextStyle(color: themeProvider.textColor),
@@ -155,8 +153,7 @@ class _SearchState extends State<Search> {
                   itemBuilder: (context, String suggestion) {
                     return ListTile(
                       title: Text(suggestion,
-                          style: const TextStyle(
-                              color: Colors.black)), // تغيير لون النص هنا أيضاً
+                          style: const TextStyle(color: Colors.black)),
                     );
                   },
                   onSelected: (String suggestion) {

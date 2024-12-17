@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
@@ -97,8 +98,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<void> _getWeatherData(double lat, double lon) async {
-    const apiKey =
-        "4d82a93258dcd53e3cb1d132aeaf5966"; // استبدل بمفتاح API الخاص بك
+    final apiKey = dotenv.env['API_KEY']; // قراءة المفتاح من ملف .env
     final url =
         "https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&units=metric&appid=$apiKey";
 
@@ -145,6 +145,7 @@ class _MainScreenState extends State<MainScreen> {
     }
 
     Position position = await Geolocator.getCurrentPosition(
+        // ignore: deprecated_member_use
         desiredAccuracy: LocationAccuracy.high);
     try {
       List<Placemark> placemarks =
@@ -168,7 +169,7 @@ class _MainScreenState extends State<MainScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // إغلاق النافذة
+                Navigator.of(context).pop();
               },
               child: const Text(
                 "No",
@@ -178,7 +179,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // إغلاق النافذة
+                Navigator.of(context).pop();
                 _getLocation();
               },
               child: const Text(
@@ -334,7 +335,7 @@ class HomeView extends StatelessWidget {
                     Color.fromARGB(255, 3, 6, 36),
                   ],
                 )
-              : null, // إذا لم يكن الوضع الليلي، اتركه بدون تدرج
+              : null,
           color: themeProvider.isDarkMode ? null : Colors.white,
         ),
         child: Padding(
@@ -455,7 +456,7 @@ class HomeView extends StatelessWidget {
           width: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(22),
-            color: themeProvider.Container, // تغيير لون الخلفية بناءً على الوضع
+            color: themeProvider.Container,
           ),
           child: Center(
             child: Column(
